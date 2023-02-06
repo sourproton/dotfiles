@@ -7,16 +7,12 @@ return require("packer").startup(function(use)
 
     -- file explorer
     use {
-        "nvim-tree/nvim-tree.lua",
-        requires = {
-            "nvim-tree/nvim-web-devicons", -- optional, for file icons
-        }
-        -- tag = "nightly", -- optional, updated every week. (see issue #1193)
-    }
-
-    use {
         "nvim-telescope/telescope.nvim", tag = "0.1.1",
-        requires = { {"nvim-lua/plenary.nvim"} }
+        requires = { 
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons", -- optional, for file icons
+            "nvim-telescope/telescope-file-browser.nvim",
+        }
     }
 
     -- LSP
