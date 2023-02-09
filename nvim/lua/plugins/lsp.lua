@@ -11,5 +11,13 @@ return {
         rust_analyzer = {},
       },
     },
+    {
+      "jose-elias-alvarez/null-ls.nvim",
+      opts = {
+        sources = {
+          require("null-ls").builtins.formatting.autopep8,
+        },
+      },
+    },
   },
 }
