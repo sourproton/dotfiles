@@ -1,9 +1,9 @@
 return {
-  {
-    "folke/tokyonight.nvim",
-    opts = {
-      colorscheme = "tokyonight",
-      style = "night",
+    {
+        "folke/tokyonight.nvim",
+        opts = {
+            colorscheme = "tokyonight",
+            style = "night",
+        },
     },
-  },
 }
