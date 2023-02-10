@@ -14,5 +14,5 @@ return {
         keys = {
             { "<leader>fd", "<cmd>Telescope file_browser<cr>", desc = "File Browser (cwd)" },
         },
-    }
+    },
 }
