@@ -13,11 +13,17 @@ return {
     },
     {
       "jose-elias-alvarez/null-ls.nvim",
-      opts = {
-        sources = {
-          require("null-ls").builtins.formatting.autopep8,
-        },
-      },
+      opts = function()
+        local nls = require("null-ls")
+        return {
+          sources = {
+            -- nls.builtins.formatting.prettierd,
+            nls.builtins.formatting.stylua,
+            nls.builtins.formatting.autopep8,
+            nls.builtins.diagnostics.flake8,
+          },
+        }
+      end,
     },
   },
 }
