@@ -6,6 +6,19 @@ return {
         },
     },
     {
+        "nvim-telescope/telescope.nvim",
+        mappings = {
+            i = {
+                ["<C-j>"] = function(...)
+                    return require("telescope.actions").move_selection_next(...)
+                end,
+                ["<C-k>"] = function(...)
+                    return require("telescope.actions").move_selection_previous(...)
+                end,
+            }
+        },
+    },
+    {
         "nvim-telescope/telescope-file-browser.nvim",
         dependencies = { "nvim-telescope/telescope.nvim" },
         config = function()
@@ -15,4 +28,24 @@ return {
             { "<leader>fd", "<cmd>Telescope file_browser<cr>", desc = "File Browser (cwd)" },
         },
     },
+    {
+        "folke/which-key.nvim",
+        config = function(_, opts)
+            local wk = require("which-key")
+            wk.setup(opts)
+            wk.register({
+                mode = { "n", "v" },
+                ["g"] = { name = "+goto" },
+            })
+        end,
+    },
+    -- {
+    --     "folke/which-key.nvim",
+    --     opts = function()
+    --         require("which-key").register({
+    --             -- mode = { "n", "v" },
+    --             ["<leader>r"] = { name = "+REPL" },
+    --         })
+    --     end
+    -- }
 }

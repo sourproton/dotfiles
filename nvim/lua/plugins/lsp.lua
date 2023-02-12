@@ -5,7 +5,9 @@ return {
             servers = {
                 -- will be automatically installed with mason and loaded with lspconfig
                 pyright = {},
-                julials = {},
+                julials = {
+                    mason = false,
+                },
                 rust_analyzer = {},
             },
         },
