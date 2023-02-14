@@ -6,4 +6,13 @@ return {
             style = "night",
         },
     },
+    -- {
+    --     "EdenEast/nightfox.nvim",
+    --     dependencies = {
+    --         "folke/lsp-colors.nvim",
+    --     },
+    --     opts = {
+    --         colorscheme = "terafox",
+    --     },
+    -- },
 }

@@ -7,15 +7,19 @@ return {
     },
     {
         "nvim-telescope/telescope.nvim",
-        mappings = {
-            i = {
-                ["<C-j>"] = function(...)
-                    return require("telescope.actions").move_selection_next(...)
-                end,
-                ["<C-k>"] = function(...)
-                    return require("telescope.actions").move_selection_previous(...)
-                end,
-            }
+        opts = {
+            defaults = {
+                mappings = {
+                    i = {
+                        ["<C-j>"] = function(...)
+                            return require("telescope.actions").move_selection_next(...)
+                        end,
+                        ["<C-k>"] = function(...)
+                            return require("telescope.actions").move_selection_previous(...)
+                        end,
+                    },
+                },
+            },
         },
     },
     {
@@ -30,22 +34,11 @@ return {
     },
     {
         "folke/which-key.nvim",
-        config = function(_, opts)
-            local wk = require("which-key")
-            wk.setup(opts)
-            wk.register({
-                mode = { "n", "v" },
-                ["g"] = { name = "+goto" },
+        opts = function()
+            require("which-key").register({
+                -- mode = { "n", "v" },
+                ["<leader>r"] = { name = "+REPL" },
             })
-        end,
-    },
-    -- {
-    --     "folke/which-key.nvim",
-    --     opts = function()
-    --         require("which-key").register({
-    --             -- mode = { "n", "v" },
-    --             ["<leader>r"] = { name = "+REPL" },
-    --         })
-    --     end
-    -- }
+        end
+    }
 }
