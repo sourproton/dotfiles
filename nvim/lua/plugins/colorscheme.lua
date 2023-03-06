@@ -1,18 +1,15 @@
 return {
-    {
-        "folke/tokyonight.nvim",
-        opts = {
-            colorscheme = "tokyonight",
-            style = "night",
-        },
-    },
     -- {
-    --     "EdenEast/nightfox.nvim",
-    --     dependencies = {
-    --         "folke/lsp-colors.nvim",
-    --     },
+    --     "folke/tokyonight.nvim",
     --     opts = {
-    --         colorscheme = "terafox",
+    --         colorscheme = "tokyonight",
+    --         style = "night",
     --     },
     -- },
+    {
+        "EdenEast/nightfox.nvim",
+        config = function()
+            vim.cmd("colorscheme carbonfox")
+        end
+    },
 }

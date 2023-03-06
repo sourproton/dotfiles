@@ -2,6 +2,7 @@
 /ardour7/
 /balena-etcher/
 /BraveSoftware/
+/cef_user_data/
 /Code/
 /dconf/
 /Electron/
@@ -9,6 +10,7 @@
 /discord/
 /eog/
 /evolution/
+/exercism/
 /gedit/
 /GIMP/
 /gnome-control-center/
@@ -25,12 +27,14 @@
 /nautilus/
 /octave/
 /Ovito/
+/pavucontrol-qt/
 /procps/
 /pulse/
 /qBittorrent/
 /rncbc.org/
 /Seafile/
 /Surfshark/
+/tmux/plugins/
 /sublime-text/
 /totem/
 /update-notifier/
