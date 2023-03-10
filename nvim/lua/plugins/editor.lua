@@ -3,6 +3,12 @@ return {
         "nvim-neo-tree/neo-tree.nvim",
         opts = {
             sort_case_insensitive = true,
+            window = {
+                mappings = {
+                    ["-"] = "open_split",
+                    ["|"] = "open_vsplit",
+                },
+            },
         },
     },
     {
