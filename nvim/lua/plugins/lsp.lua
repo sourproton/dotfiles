@@ -4,7 +4,7 @@ return {
         opts = {
             servers = {
                 -- will be automatically installed with mason and loaded with lspconfig
-                pyright = {
+                clangd = {
                     mason = false,
                 },
                 julials = {
@@ -15,14 +15,9 @@ return {
                     -- julia --project=~/.julia/environments/nvim-lspconfig -e 'using Pkg; Pkg.instantiate()'
                     mason = false,
                 },
-                -- rust_analyzer = {
-                --     -- rust-analyzer installed with rustup
-                --     -- rustup component add rust-analyzer
-                --     mason = false,
-                --     cmd = {
-                --         "rustup", "run", "stable", "rust-analyzer"
-                --     },
-                -- },
+                pyright = {
+                    mason = false,
+                },
             },
         },
     },
