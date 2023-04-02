@@ -1,0 +1,20 @@
+[[language]]
+name = "python"
+roots = ["pyproject.toml"]
+
+[language.language-server]
+command = "pyright-langserver"
+args = ["--stdio"]
+
+[language.config] # <- this is the important line
+
+
+[[language]]
+name = "rust"
+
+[language.language-server]
+command = "rustup"
+args = ["run", "stable", "rust-analyzer"]
+
+[language.config]
+check = { command = "clippy" }
