@@ -10,7 +10,7 @@ keybinds {
         bind "Alt p" { GoToPreviousTab; }
 
         // panes
-        // bind "Alt m" { NewPane; }
+        bind "Alt m" { NewPane; }
     }
     locked {
         bind "Ctrl g" { SwitchToMode "Normal"; }
