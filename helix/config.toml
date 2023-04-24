@@ -4,6 +4,7 @@ theme = "adwaita-dark"
 bufferline = "multiple"
 line-number = "relative"
 rulers = [101]
+true-color=true
 
 [editor.cursor-shape]
 insert = "bar"
@@ -24,3 +25,4 @@ L = "goto_next_buffer"
 [keys.normal.space]
 w = ":write"
 q = ":quit"
+Q = ":quit!"
