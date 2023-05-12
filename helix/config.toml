@@ -4,7 +4,8 @@ theme = "adwaita-dark"
 bufferline = "multiple"
 line-number = "relative"
 rulers = [101]
-true-color=true
+true-color = true
+indent-guides.render = true
 
 [editor.cursor-shape]
 insert = "bar"
@@ -28,3 +29,5 @@ W = ":write-quit"
 q = ":quit"
 Q = ":quit!"
 c = ":buffer-close"
+'\' = ":hsplit"
+'|' = ":vsplit"
