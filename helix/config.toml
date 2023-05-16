@@ -31,3 +31,6 @@ Q = ":quit!"
 c = ":buffer-close"
 '\' = ":hsplit"
 '|' = ":vsplit"
+
+[keys.normal.'\']
+space = [":pipe-to tmux load-buffer - \\; paste-buffer -dpr -t right", ":sh tmux send-keys -t right Enter"]
