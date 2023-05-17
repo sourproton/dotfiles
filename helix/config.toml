@@ -33,4 +33,7 @@ c = ":buffer-close"
 '|' = ":vsplit"
 
 [keys.normal.'\']
-space = [":pipe-to tmux load-buffer - \\; paste-buffer -dpr -t right", ":sh tmux send-keys -t right Enter"]
+space = [''':pipe-to tmux load-buffer - \; paste-buffer -dpr -t '{right-of}' \; send-keys -t '{right-of}' Enter''']
+'\' = [''':sh tmux send-keys Q/# Space %% Enter O# Escape Escape Nvg.a BSpace BSpace Escape Escape \\ Space uuQ''']
+# '\' = [''':sh tmux send-keys /#\s\%\%\rO#\e\eNvg.a\b\b\e\e\\\suu''']
+# the above is the quivalent of putting, in .tmux.conf: send-keys Q/#\s%%\rO#\e\eNvg.a\b\b\e\e\\\suuQ
