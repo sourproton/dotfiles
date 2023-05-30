@@ -3,17 +3,15 @@
 
 # dont ignore
 !.gitignore
-!grub
-!grub_reinstall.sh
 
 !alacritty/
 !cascadiacode/
+!games/
 !helix/
 !neofetch/
 !nvim/
 !tmux/
 !wallpapers_profile/
-!zellij/
 
 # ignore
 tmux/plugins/
