@@ -5,6 +5,7 @@
 !.gitignore
 
 !alacritty/
+!arch/
 !cascadiacode/
 !games/
 !helix/
