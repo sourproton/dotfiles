@@ -93,7 +93,7 @@ $ swapon /dev/{swap_partition}
 ### 2.1 Install essential packages
 
 ```
-$ pacstrap -K /mnt base linux linux-firmware linux-lts linux-headers linux-lts-headers intel-ucode networkmanager sof-firmware base-devel git nano vim helix alacritty man-db
+$ pacstrap -K /mnt base linux linux-firmware linux-lts linux-headers linux-lts-headers intel-ucode networkmanager sof-firmware base-devel git nano vim helix alacritty man-db zsh
 ```
 
 ## 3 System configuration
@@ -234,3 +234,31 @@ $ umount -R /mnt
 
 $ reboot
 ```
+
+## 4 Post configuration
+
+### 4.1 dotfiles
+
+```
+$ cd .config
+
+$ git init
+
+$ git remote add origin {PATH/TO/REPO}
+
+$ git fetch
+
+$ git switch master
+```
+
+### To-dos
+
+- steam
+- zsh + ohmyzsh
+- rustup
+- juliaup
+- deafault applications
+- shortcuts
+- wallpaper
+- docker + statusbar
+- theme
