@@ -221,6 +221,8 @@ $ systemctl enable NetworkManager
 $ systemctl enable bluetooth
 
 $ systemctl enable sddm
+
+$ systemctl enable systemd-boot-update
 ```
 
 ### Finish
