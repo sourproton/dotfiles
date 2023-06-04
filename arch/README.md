@@ -210,7 +210,7 @@ $ pacman -S xorg plasma plasma-wayland-session kde-applications
 ```
 
 ```
-$ pacman -S firefox thunderbird libreoffice-still tmux neofetch discord qbittorrent
+$ pacman -S firefox thunderbird libreoffice-still tmux neofetch discord qbittorrent htop
 ```
 
 ### Activate services
