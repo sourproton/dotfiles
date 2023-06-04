@@ -210,7 +210,7 @@ $ pacman -S xorg plasma plasma-wayland-session kde-applications
 ```
 
 ```
-$ pacman -S firefox thunderbird libreoffice-still tmux neofetch discord qbittorrent htop
+$ pacman -S firefox thunderbird libreoffice-still tmux neofetch discord qbittorrent htop chromium gimp pacman-contrib wl-clipboard
 ```
 
 ### 3.10 Activate services
@@ -225,7 +225,26 @@ $ systemctl enable sddm
 $ systemctl enable systemd-boot-update
 ```
 
-### 3.11 Finish
+### 3.11 Hooks
+
+#### Pacman cache
+
+**Create** `/etc/pacman.d/hooks/clean_package_cache.hook`
+
+```
+[Trigger]
+Operation = Upgrade
+Operation = Install
+Operation = Remove
+Type = Package
+Target = *
+[Action]
+Description = Cleaning pacman cache...
+When = PostTransaction
+Exec = /usr/bin/paccache -r
+```
+
+### 3.12 Finish
 
 ```
 $ exit
@@ -251,16 +270,17 @@ $ git fetch
 $ git switch master
 ```
 
-### To-dos
+### TODOs
 
 - steam
 - zsh + ohmyzsh
 - rustup
 - juliaup
-- deafault applications
+- default applications
 - shortcuts
 - wallpaper
 - docker + statusbar
 - theme
 - keyboard layout
 - tmux TPM + symlink tmux conf
+- window title bars
