@@ -78,7 +78,7 @@ $ mkfs.fat -F 32 /dev/{efi_system_partition}
 $ e2label /dev/{root_partition} {label}
 ```
 
-### 1.6 Mount the file systems
+### 1.7 Mount the file systems
 
 ```
 $ mount /dev/{root_partition} /mnt
@@ -148,7 +148,7 @@ $ echo "{myhostname}" > /etc/hostname
 $ passwd
 ```
 
-### 3.8 Bootloader
+### 3.7 Bootloader
 
 ```
 $ bootctl install
@@ -189,7 +189,7 @@ Update
 $ bootctl update
 ```
 
-### 3.9 Sudo user
+### 3.8 Sudo user
 
 ```
 $ useradd -m -g users -G wheel {username}
@@ -203,7 +203,7 @@ $ passwd {username}
 $ EDITOR={editor} visudo
 ```
 
-### 3.10 Desktop environment
+### 3.9 Desktop environment
 
 ```
 $ pacman -S xorg plasma plasma-wayland-session kde-applications
@@ -213,7 +213,7 @@ $ pacman -S xorg plasma plasma-wayland-session kde-applications
 $ pacman -S firefox thunderbird libreoffice-still tmux neofetch discord qbittorrent htop
 ```
 
-### Activate services
+### 3.10 Activate services
 
 ```
 $ systemctl enable NetworkManager
@@ -225,7 +225,7 @@ $ systemctl enable sddm
 $ systemctl enable systemd-boot-update
 ```
 
-### Finish
+### 3.11 Finish
 
 ```
 $ exit
