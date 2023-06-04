@@ -1,8 +1,8 @@
 # Arch installation
 
-31 may 2023
+June 2023
 
-With systemd-boot and minimal KDE Plasma
+With systemd-boot full KDE Plasma
 
 Based on the Arch Wiki's [install guide](https://wiki.archlinux.org/title/Installation_guide)
 
@@ -25,13 +25,13 @@ $ iwctl
 
 [iwd]# device {device} set-property Powered on
 
-[iwd]# adapter adapter set-property Powered on
+[iwd]# adapter {adapter} set-property Powered on
 
-[iwd]# station device scan
+[iwd]# station {device} scan
 
-[iwd]# station device get-networks
+[iwd]# station {device} get-networks
 
-[iwd]# station device connect SSID
+[iwd]# station {device} connect {SSID}
 
 $ ping google.com
 ```
@@ -46,14 +46,14 @@ $ timedatectl
 
 GPT. Create 3 partitions:
 
-- 512M EFI (type 1)
+- 2G EFI (type 1)
 - 8G swap (type 19)
 - root (type 23)
 
 ```
 $ fdisk -l
 
-$ fdisk /dev/the_disk_to_be_partitioned
+$ fdisk /dev/{the_disk_to_be_partitioned}
 
 # g
 
@@ -65,21 +65,27 @@ $ fdisk /dev/the_disk_to_be_partitioned
 ### 1.5 Format the partitions
 
 ```
-$ mkfs.ext4 /dev/root_partition
+$ mkfs.ext4 /dev/{root_partition}
 
-$ mkswap /dev/swap_partition
+$ mkswap /dev/{swap_partition}
 
-$ mkfs.fat -F 32 /dev/efi_system_partition
+$ mkfs.fat -F 32 /dev/{efi_system_partition}
+```
+
+### 1.6 Re-label the root partiton
+
+```
+$ e2label /dev/{root_partition} {label}
 ```
 
 ### 1.6 Mount the file systems
 
 ```
-$ mount /dev/root_partition /mnt
+$ mount /dev/{root_partition} /mnt
 
-$ mount --mkdir /dev/efi_system_partition /mnt/boot
+$ mount --mkdir /dev/{efi_system_partition} /mnt/boot
 
-$ swapon /dev/swap_partition
+$ swapon /dev/{swap_partition}
 ```
 
 ## 2 Installation
@@ -87,7 +93,7 @@ $ swapon /dev/swap_partition
 ### 2.1 Install essential packages
 
 ```
-$ pacstrap -K /mnt base base-devel linux linux-lts linux-headers linux-lts-headers linux-firmware intel-ucode zsh nano vim neovim helix alacritty git man-db
+$ pacstrap -K /mnt base linux linux-firmware linux-lts linux-headers linux-lts-headers intel-ucode networkmanager sof-firmware base-devel git nano vim helix alacritty man-db
 ```
 
 ## 3 System configuration
@@ -107,7 +113,7 @@ $ arch-chroot /mnt
 ### 3.3 Time zone
 
 ```
-$ ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
+$ ln -sf /usr/share/zoneinfo/{Region}/{City} /etc/localtime
 
 $ hwclock --systohc
 ```
@@ -120,7 +126,7 @@ $ hwclock --systohc
 $ locale-gen
 ```
 
-**Edit** `/etc/locale.conf`
+**Create** `/etc/locale.conf`
 
 ```
 LANG=en_US.UTF-8
@@ -133,7 +139,7 @@ LC_MEASUREMENT=fr_FR.UTF-8
 ### 3.5 Network configuration
 
 ```
-$ echo "myhostname" > /etc/hostname
+$ echo "{myhostname}" > /etc/hostname
 ```
 
 ### 3.6 Root password
@@ -148,27 +154,31 @@ $ passwd
 $ bootctl install
 ```
 
-Discover PARTIUUD of **root** partition
-
-```
-$ blkid
-```
-
-**Edit** `/boot/loader/entries/arch.conf`
+**Create** `/boot/loader/entries/arch.conf`
 
 ```
 title   Arch Linux
 linux   /vmlinuz-linux
 initrd  /intel-ucode.img
 initrd  /initramfs-linux.img
-options root=PARTUUID=MYPARTUUID rw
+options root="LABEL={label}" rw
+```
+
+**Create** `/boot/loader/entries/arch-lts.conf`
+
+```
+title   Arch Linux LTS
+linux   /vmlinuz-linux-lts
+initrd  /intel-ucode.img
+initrd  /initramfs-linux-lts.img
+options root="LABEL={label}" rw
 ```
 
 **Edit** `boot/loader/loader.conf`
 
 ```
-default      arch.conf
-timeout      4
+default      arch-lts.conf
+timeout      3
 console-mode max
 editor       no
 ```
@@ -182,33 +192,25 @@ $ bootctl update
 ### 3.9 Sudo user
 
 ```
-$ useradd -m -g users -G wheel username
+$ useradd -m -g users -G wheel {username}
 
-$ passwd username
+$ passwd {username}
 ```
 
 **Uncomment** `%wheel ALL=(ALL) ALL`
 
 ```
-$ EDITOR=vim visudo
+$ EDITOR={editor} visudo
 ```
 
-### 3.10 Desktop environment (KDE Plasma)
+### 3.10 Desktop environment
 
 ```
-$ pacman -S xorg plasma kde-office-meta kde-network-meta kde-multimedia-meta kde-system-meta kde-utilities-meta plasma-wayland-session egl-wayland
+$ pacman -S xorg plasma plasma-wayland-session kde-applications
 ```
 
-And other stuff to make everything work
-
 ```
-$ pacman -S sof-firmware pulseaudio-alsa pulseaudio-bluetooth bluez-utils vlc
-```
-
-Applications
-
-```
-$ pacman -S firefox thunderbird libreoffice-still tmux nvidia-prime
+$ pacman -S firefox thunderbird libreoffice-still tmux neofetch discord qbittorrent
 ```
 
 ### Activate services
