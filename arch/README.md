@@ -263,3 +263,4 @@ $ git switch master
 - docker + statusbar
 - theme
 - keyboard layout
+- tmux TPM + symlink tmux conf
