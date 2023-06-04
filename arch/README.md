@@ -262,3 +262,4 @@ $ git switch master
 - wallpaper
 - docker + statusbar
 - theme
+- keyboard layout
