@@ -206,11 +206,11 @@ $ EDITOR={editor} visudo
 ### 3.9 Desktop environment
 
 ```
-$ pacman -S xorg plasma plasma-wayland-session kde-applications
+$ pacman -S xorg gnome
 ```
 
 ```
-$ pacman -S firefox thunderbird libreoffice-still tmux neofetch discord qbittorrent htop chromium gimp pacman-contrib wl-clipboard
+$ pacman -S firefox libreoffice-still tmux neofetch discord qbittorrent htop chromium gimp pacman-contrib wl-clipboard alsa-utils pulseaudio-alsa pulseaudio-bluetooth ttf-cascadia-code-nerd xournalpp
 ```
 
 ### 3.10 Activate services
