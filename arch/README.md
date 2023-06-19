@@ -209,9 +209,24 @@ $ EDITOR={editor} visudo
 $ pacman -S xorg gnome
 ```
 
-```
-$ pacman -S firefox libreoffice-still tmux neofetch discord qbittorrent htop chromium gimp pacman-contrib wl-clipboard alsa-utils pulseaudio-alsa pulseaudio-bluetooth ttf-cascadia-code-nerd xournalpp
-```
+- chromium
+- discord
+- firefox
+- gimp
+- htop
+- libreoffice-still
+- neofetch
+- okular
+- pacman-contrib
+- pyright
+- python-pip
+- python-tk
+- qbittorrent
+- spofity-launcher
+- tmux
+- ttf-cascadia-code-nerd
+- wl-clipboard
+- xournalpp
 
 ### 3.10 Activate services
 
@@ -272,15 +287,14 @@ $ git switch master
 
 ### TODOs
 
-- steam
 - zsh + ohmyzsh
+- yay
+  - minecraft-launcher
+  - pocket-casts-linux-bin
 - rustup
 - juliaup
-- default applications
 - shortcuts
-- wallpaper
-- docker + statusbar
-- theme
 - keyboard layout
 - tmux TPM + symlink tmux conf
-- window title bars
+- default applications
+- steam
