@@ -14,6 +14,7 @@
 !nvim/
 !tmux/
 !wallpapers_profile/
+!wezterm/
 
 # ignore
 tmux/plugins/
