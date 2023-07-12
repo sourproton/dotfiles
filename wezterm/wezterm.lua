@@ -17,7 +17,13 @@ config.font = wezterm.font {
 }
 
 -- tab bar
-config.hide_tab_bar_if_only_one_tab = true
+-- config.hide_tab_bar_if_only_one_tab = true
+
+-- remove title bar
+config.window_decorations = "NONE"
+
+-- background
+config.window_background_opacity = 0.8
 
 -- and finally, return the configuration to wezterm
 return config
