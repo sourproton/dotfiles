@@ -4,14 +4,12 @@
 # dont ignore
 !.gitignore
 
-!alacritty/
 !arch/
 !cascadiacode/
 !games/
 !helix/
-!kitty/
+!lvim/
 !neofetch/
-!nvim/
 !tmux/
 !wallpapers_profile/
 !wezterm/

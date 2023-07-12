@@ -33,7 +33,15 @@ c = ":buffer-close"
 '|' = ":vsplit"
 
 [keys.normal.'\']
-space = [''':pipe-to tmux load-buffer - \; paste-buffer -dpr -t '{right-of}' \; send-keys -t '{right-of}' Enter''']
-'\' = [''':sh tmux send-keys Q/# Space %% Enter O# Escape Escape Nvg.a BSpace BSpace Escape Escape \\ Space uuQ''']
-# '\' = [''':sh tmux send-keys /#\s\%\%\rO#\e\eNvg.a\b\b\e\e\\\suu''']
-# the above is the quivalent of putting, in .tmux.conf: send-keys Q/#\s%%\rO#\e\eNvg.a\b\b\e\e\\\suuQ
+# send selection to tmux pane on the right
+t = [''':pipe-to tmux load-buffer - \; paste-buffer -dpr -t '{right-of}' \; send-keys -t '{right-of}' Enter''']
+
+# send selection to wezterm pane $HELIX_TARGET (export this env variable before)
+w = [''':pipe-to wezterm cli send-text --pane-id $HELIX_TARGET''', ''':sh wezterm cli send-text --no-paste --pane-id $HELIX_TARGET $'\r'''']
+
+[keys.normal.'\'.'\']
+# send cell to tmux pane on the right
+'t' = [''':sh tmux send-keys Q/# Space %% Enter O# Escape Escape Nvg.a BSpace BSpace Escape Escape \\ t uuQ''']
+
+# send cell to wezterm pane $HELIX_TARGET
+'w' = [''':sh wezterm cli send-text --no-paste $'Q/# %%\r\rO#\e\eNvg.a\b\b\e\e\\wuuQ'''']
