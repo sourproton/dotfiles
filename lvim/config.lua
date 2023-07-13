@@ -31,13 +31,27 @@ local function send_selection()
     vim.api.nvim_feedkeys(":silent !tmux send-keys -t " .. vim.b.tmuxtarget .. " Enter\r", "t", true)
 end
 
+local cell_header = "# %%"
+
 -- sends cell to target
 local function send_cell()
     -- check if `tmuxtarget` exists, call `config_tmuxtarget` if not
     if vim.b.tmuxtarget == nil then config_tmuxtarget() end
 
-    -- select current cell
-    vim.api.nvim_feedkeys("/# %%\rNvnk", "t", true)
+    -- go to start of the cell
+    vim.api.nvim_feedkeys("/" .. cell_header .. "\rN", "t", true)
+
+    -- check if it's the last cell
+    local sc = vim.fn.searchcount()
+    local last_cell = sc.current == sc.total
+
+    if last_cell then
+        -- if it's the last cell, select until end of file
+        vim.api.nvim_feedkeys("vG", "t", true)
+    else
+        -- if not in the last cell, select until one line above next cell
+        vim.api.nvim_feedkeys("vnk", "t", true)
+    end
 
     -- send selection
     send_selection()
