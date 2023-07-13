@@ -11,7 +11,7 @@ vim.opt.cc = "+1"
 vim.opt.shiftwidth = 4 -- Size of an indent
 vim.opt.tabstop = 4 -- Number of spaces tabs count for
 
--- send selection to tmux tmux
+-- send selection to tmux for REPL workflows
 
 -- sets buffer-variable `tmuxtarget` to value read from `vim.fn.input`
 local function config_tmuxtarget()
@@ -20,20 +20,20 @@ end
 
 -- sends selected text to target
 local function send_selection()
-    -- checks if `tmuxtarget` exists, calls `config_tmuxtarget` if not
+    -- check if `tmuxtarget` exists, call `config_tmuxtarget` if not
     if vim.b.tmuxtarget == nil then config_tmuxtarget() end
 
     -- load tmux buffer with selected text
     vim.api.nvim_feedkeys(":'<,'>:w !tmux load-buffer - \r", "t", true)
     -- paste buffer to target
     vim.api.nvim_feedkeys(":silent !tmux paste-buffer -dpr -t " .. vim.b.tmuxtarget .. "\r", "t", true)
-    -- sends carriage return
+    -- send carriage return
     vim.api.nvim_feedkeys(":silent !tmux send-keys -t " .. vim.b.tmuxtarget .. " Enter\r", "t", true)
 end
 
--- send cell to target
+-- sends cell to target
 local function send_cell()
-    -- checks if `tmuxtarget` exists, calls `config_tmuxtarget` if not
+    -- check if `tmuxtarget` exists, call `config_tmuxtarget` if not
     if vim.b.tmuxtarget == nil then config_tmuxtarget() end
 
     -- select current cell
@@ -48,12 +48,12 @@ end
 
 lvim.builtin.which_key.mappings["r"] = {
     name = "Tmux send",
-    c = { config_tmuxtarget, "Configure target" },
+    t = { config_tmuxtarget, "Configure target" },
     s = { send_cell, "Send cell" },
 }
 
 lvim.builtin.which_key.vmappings["r"] = {
     name = "Tmux send",
-    c = { config_tmuxtarget, "Configure target" },
+    t = { config_tmuxtarget, "Configure target" },
     s = { send_selection, "Send selection" },
 }
