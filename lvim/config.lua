@@ -4,70 +4,31 @@
 -- Discord: https://discord.com/invite/Xb9B4Ny
 
 vim.opt.relativenumber = true
-
 vim.opt.textwidth = 100
-vim.opt.cc = "+1"
+vim.opt.cc = "+1"                  -- draw vertical line
+vim.opt.shiftwidth = 4             -- Size of an indent
+vim.opt.tabstop = 4                -- Number of spaces tabs count for
 
-vim.opt.shiftwidth = 4 -- Size of an indent
-vim.opt.tabstop = 4 -- Number of spaces tabs count for
+lvim.transparent_window = true
 
--- send selection to tmux for REPL workflows
+lvim.plugins = {
+    {
+        "sourproton/tunnell.nvim",
+        config = function()
+            local tunnell = require("tunnell")
 
--- sets buffer-variable `tmuxtarget` to value read from `vim.fn.input`
-local function config_tmuxtarget()
-    vim.b.tmuxtarget = vim.fn.input("Tmux target: ")
-end
+            lvim.builtin.which_key.mappings["t"] = {
+                name = "Tunnell",
+                t = { tunnell.send_cell, "Tunnell cell" },
+                p = { tunnell.set_tmux_target, "Set target pane" },
+                h = { tunnell.set_cell_header, "Set cell header" },
+            }
 
--- sends selected text to target
-local function send_selection()
-    -- check if `tmuxtarget` exists, call `config_tmuxtarget` if not
-    if vim.b.tmuxtarget == nil then config_tmuxtarget() end
-
-    -- load tmux buffer with selected text
-    vim.api.nvim_feedkeys(":'<,'>:w !tmux load-buffer - \r", "t", true)
-    -- paste buffer to target
-    vim.api.nvim_feedkeys(":silent !tmux paste-buffer -dpr -t " .. vim.b.tmuxtarget .. "\r", "t", true)
-    -- send carriage return
-    vim.api.nvim_feedkeys(":silent !tmux send-keys -t " .. vim.b.tmuxtarget .. " Enter\r", "t", true)
-end
-
-local cell_header = "# %%"
-
--- sends cell to target
-local function send_cell()
-    -- check if `tmuxtarget` exists, call `config_tmuxtarget` if not
-    if vim.b.tmuxtarget == nil then config_tmuxtarget() end
-
-    -- go to start of the cell
-    vim.api.nvim_feedkeys("/" .. cell_header .. "\rN", "t", true)
-
-    -- check if it's the last cell
-    local sc = vim.fn.searchcount()
-    local last_cell = sc.current == sc.total
-
-    if last_cell then
-        -- if it's the last cell, select until end of file
-        vim.api.nvim_feedkeys("vG", "t", true)
-    else
-        -- if not in the last cell, select until one line above next cell
-        vim.api.nvim_feedkeys("vnk", "t", true)
-    end
-
-    -- send selection
-    send_selection()
-
-    -- go to next cell
-    vim.api.nvim_feedkeys("n", "t", true)
-end
-
-lvim.builtin.which_key.mappings["r"] = {
-    name = "Tmux send",
-    t = { config_tmuxtarget, "Configure target" },
-    s = { send_cell, "Send cell" },
-}
-
-lvim.builtin.which_key.vmappings["r"] = {
-    name = "Tmux send",
-    t = { config_tmuxtarget, "Configure target" },
-    s = { send_selection, "Send selection" },
+            lvim.builtin.which_key.vmappings["t"] = {
+                name = "Tunnell",
+                t = { tunnell.send_selection, "Tunnell selection" },
+                p = { tunnell.set_tmux_target, "Set target pane" },
+            }
+        end
+    }
 }
