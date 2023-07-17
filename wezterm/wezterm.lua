@@ -16,11 +16,11 @@ config.font = wezterm.font {
   harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' },
 }
 
--- tab bar
--- config.hide_tab_bar_if_only_one_tab = true
+-- hide tab bar if only one tab
+config.hide_tab_bar_if_only_one_tab = true
 
 -- remove title bar
-config.window_decorations = "NONE"
+-- config.window_decorations = "NONE"
 
 -- background
 config.window_background_opacity = 0.8
