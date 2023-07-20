@@ -17,6 +17,8 @@ lvim.plugins = {
         -- dir = "/home/sourproton/tunnell.nvim",
         -- dev = true,
 
+        config = true,
+
         keys = {
             { "<leader>tt", ":TunnellCell<CR>",   mode = { "n" }, desc = "Tunnell cell" },
             { "<leader>tt", ":TunnellRange<CR>",  mode = { "v" }, desc = "Tunnell range" },
@@ -28,9 +30,5 @@ lvim.plugins = {
             "TunnellRange",
             "TunnellConfig",
         },
-
-        config = function()
-            require("tunnell").setup()
-        end,
     }
 }
