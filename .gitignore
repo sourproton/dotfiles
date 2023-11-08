@@ -5,10 +5,12 @@
 !.gitignore
 
 !arch/
+!bash/
 !cascadiacode/
 !games/
 !nvim/
 !neofetch/
+!scripts/
 !tmux/
 !wallpapers_profile/
 !wezterm/
