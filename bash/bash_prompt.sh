@@ -27,6 +27,7 @@ GIT_PS1_SHOWSTASHSTATE=1 # $ if something is stashed
 GIT_PS1_SHOWUNTRACKEDFILES=1 # % if there are untracked files
 GIT_PS1_SHOWUPSTREAM="auto" # <, >, <>, = behind, ahead, diverged or no difference from upstream
 GIT_PS1_SHOWCOLORHINTS=0 # display in color
+GIT_PS1_STATESEPARATOR="" # separator between branch name and status symbols
 
 # The various escape codes that we can use to color our prompt.
         RED="\[\033[0;31m\]"
@@ -79,7 +80,7 @@ function set_bash_prompt () {
 
   # Set the bash prompt variable.
   PS1="
-${PYTHON_VIRTUALENV}${BLUE}\u${COLOR_NONE}@${RED}\h ${GREEN}\w ${COLOR_NONE}${BRANCH}
+${PYTHON_VIRTUALENV}${BLUE}\u${COLOR_NONE}@${RED}\h ${YELLOW}\w ${COLOR_NONE}${BRANCH}
 ${PROMPT_SYMBOL}"
 }
 
