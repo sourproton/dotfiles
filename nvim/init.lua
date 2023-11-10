@@ -640,5 +640,9 @@ cmp.setup {
   },
 }
 
+-- python venv called .nvimvenv at home
+-- install package pynvim
+vim.g.python3_host_prog = '~/.nvimvenv/bin/python'
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
