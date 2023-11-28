@@ -236,15 +236,12 @@ require('lazy').setup({
     'sourproton/tunnell.nvim',
     -- dir = '/home/sourproton/tunnell.nvim',
     -- dev = true,
-
     config = true,
-
     keys = {
       { '<leader>tt', ':TunnellCell<CR>',   mode = { 'n' }, desc = 'Tunnell cell' },
       { '<leader>tt', ':TunnellRange<CR>',  mode = { 'v' }, desc = 'Tunnell range' },
       { '<leader>tc', ':TunnellConfig<CR>', mode = { 'n' }, desc = 'Tunnell config' },
     },
-
     cmd = {
       'TunnellCell',
       'TunnellRange',
@@ -264,6 +261,24 @@ require('lazy').setup({
     --   vim.cmd.colorscheme 'tokyonight-storm'
     -- end,
   },
+
+  {
+    "nvim-tree/nvim-tree.lua",
+    version = "*",
+    lazy = false,
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("nvim-tree").setup {}
+    end,
+    keys = {
+      { '<leader>ff', ':NvimTreeFocus<CR>',    mode = { 'n' }, desc = 'NvimTree Focus' },
+      { '<leader>ft', ':NvimTreeToggle<CR>',   mode = { 'n' }, desc = 'NvimTree Toggle' },
+      { '<leader>fF', ':NvimTreeFindFile<CR>', mode = { 'n' }, desc = 'NvimTree Find File' },
+      { '<leader>fc', ':NvimTreeCollapse<CR>', mode = { 'n' }, desc = 'NvimTree Collapse' },
+    },
+  }
 }, {})
 
 -- [[ Setting options ]]
