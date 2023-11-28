@@ -12,7 +12,7 @@ end
 
 -- fonts
 config.font = wezterm.font {
-    family = "CaskaydiaCove Nerd Font",
+    family = "CaskaydiaCove NF",
     harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
 }
 
