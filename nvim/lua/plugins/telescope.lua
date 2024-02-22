@@ -20,7 +20,7 @@ return {
         { '<leader>fd', '<cmd>Telescope diagnostics<cr>', desc = 'diagnostics' },
         { '<leader>ft', '<cmd>Telescope treesitter<cr>', desc = 'treesitter' },
     },
-    config = function ()
+    config = function()
         require('telescope').setup({
             defaults = {
                 mappings = {
