@@ -1,5 +1,5 @@
 -- python provider with 'pynvim' package installed
-vim.g.python3_host_prog = '~/.venvnvim/bin/python'
+vim.g.python3_host_prog = "~/.venvnvim/bin/python"
 
 -- tab behavior
 vim.o.expandtab = true
@@ -8,7 +8,7 @@ vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
 
 -- vertical mark
-vim.o.cc = '101'
+vim.o.cc = "101"
 
 -- set highlight on search
 vim.o.hlsearch = false
@@ -17,7 +17,7 @@ vim.o.hlsearch = false
 vim.wo.number = true
 
 -- enable mouse mode
-vim.o.mouse = 'a'
+vim.o.mouse = "a"
 
 -- sync clipboard between OS and Neovim.
 -- vim.o.clipboard = 'unnamedplus'
@@ -33,14 +33,14 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
+vim.wo.signcolumn = "yes"
 
 -- decrease update time
 vim.o.updatetime = 250
 vim.o.timeoutlen = 300
 
 -- set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
+vim.o.completeopt = "menuone,noselect"
 
 -- NOTE: you should make sure your terminal supports this
 vim.o.termguicolors = true

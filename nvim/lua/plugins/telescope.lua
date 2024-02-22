@@ -1,38 +1,48 @@
 return {
-    'nvim-telescope/telescope.nvim',
-    branch = '0.1.x',
-    dependencies = {
-        'nvim-lua/plenary.nvim',
-        {
-            'nvim-telescope/telescope-fzf-native.nvim',
-            build = 'make',
-        },
-    },
-    keys = {
-        { '<leader>ff', '<cmd>Telescope find_files<cr>', desc = 'find files'},
-        { '<leader>fg', '<cmd>Telescope current_buffer_fuzzy_find<cr>', desc = 'fuzzy find'},
-        { '<leader>fG', '<cmd>Telescope live_grep<cr>', desc = 'live grep'},
-        { '<leader>fb', '<cmd>Telescope buffers<cr>', desc = 'buffers'},
-        { '<leader>fh', '<cmd>Telescope help_tags<cr>', desc = 'help tags' },
-        { '<leader>fs', '<cmd>Telescope grep_string<cr>', desc = 'grep string' },
-        { '<leader>fc', '<cmd>Telescope commands<cr>', desc = 'commands' },
-        { '<leader>fr', '<cmd>Telescope lsp_references<cr>', desc = 'references' },
-        { '<leader>fd', '<cmd>Telescope diagnostics<cr>', desc = 'diagnostics' },
-        { '<leader>ft', '<cmd>Telescope treesitter<cr>', desc = 'treesitter' },
-    },
-    config = function()
-        require('telescope').setup({
-            defaults = {
-                mappings = {
-                    i = {
-                        ['<C-u>'] = 'preview_scrolling_up',
-                        ['<C-e>'] = 'preview_scrolling_down',
-                    }
-                }
-            },
-        })
+	{
+		"nvim-telescope/telescope.nvim",
+		branch = "0.1.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			{
+				"nvim-telescope/telescope-fzf-native.nvim",
+				build = "make",
+			},
+		},
+		config = function()
+			local telescope = require("telescope")
+			telescope.setup({
+				defaults = {
+					mappings = {
+						i = {
+							["<C-u>"] = "preview_scrolling_up",
+							["<C-e>"] = "preview_scrolling_down",
+						},
+					},
+				},
+			})
 
-        -- this will load fzf_native and have it override the default file sorter
-        require('telescope').load_extension('fzf')
-    end,
+			-- keymaps
+			local builtin = require("telescope.builtin")
+			vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "find files" })
+			vim.keymap.set("n", "<leader>fg", builtin.current_buffer_fuzzy_find, { desc = "fuzzy find" })
+			vim.keymap.set("n", "<leader>fG", builtin.live_grep, { desc = "live grep" })
+			vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "buffers" })
+			vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "help tags" })
+			vim.keymap.set("n", "<leader>fs", builtin.grep_string, { desc = "grep string" })
+			vim.keymap.set("n", "<leader>fc", builtin.commands, { desc = "commands" })
+			vim.keymap.set("n", "<leader>fr", builtin.lsp_references, { desc = "references" })
+			vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "diagnostics" })
+			vim.keymap.set("n", "<leader>ft", builtin.treesitter, { desc = "treesitter" })
+
+			-- this will load fzf_native and have it override the default file sorter
+			telescope.load_extension("fzf")
+
+			telescope.load_extension("ui-select")
+		end,
+	},
+
+	{
+		"nvim-telescope/telescope-ui-select.nvim",
+	},
 }
