@@ -20,10 +20,13 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- [[ configure plugins ]]
+-- [[ plugins ]]
 
 require("lazy").setup("plugins")
 
--- [[ setting options ]]
+-- [[ options ]]
 
 require("nvim-options")
+
+-- [[ keymaps ]]
+require("keymaps")

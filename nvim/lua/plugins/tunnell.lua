@@ -5,9 +5,9 @@ return {
 		-- dev = true,
 		config = true,
 		keys = {
-			{ "<leader>tt", ":TunnellCell<CR>", mode = { "n" }, desc = "Tunnell cell" },
-			{ "<leader>tt", ":TunnellRange<CR>", mode = { "v" }, desc = "Tunnell range" },
-			{ "<leader>tc", ":TunnellConfig<CR>", mode = { "n" }, desc = "Tunnell config" },
+			{ "<leader>st", ":TunnellCell<CR>", mode = { "n" }, desc = "Tunnell cell" },
+			{ "<leader>st", ":TunnellRange<CR>", mode = { "v" }, desc = "Tunnell range" },
+			{ "<leader>sc", ":TunnellConfig<CR>", mode = { "n" }, desc = "Tunnell config" },
 		},
 		cmd = {
 			"TunnellCell",
